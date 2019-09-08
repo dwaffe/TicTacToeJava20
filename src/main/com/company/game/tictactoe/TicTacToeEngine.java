@@ -22,7 +22,7 @@ public class TicTacToeEngine {
         while (!state.isGameOver()) {
             System.out.println("Gracz " + (i % 2 + 1) + ":");
             Player currentPlayer = players.get(i % 2);
-            int playerMove = currentPlayer.makeMove();
+            int playerMove = currentPlayer.makeMove(state.getBoard());
 
             if(!judge.isMoveValid(playerMove)) {
                 System.out.println("Ruch nieprawidłowy");
@@ -38,5 +38,15 @@ public class TicTacToeEngine {
             System.out.println(state.getBoard());
             i++;
         }
+        i--;
+        if (state.isWon()) {
+            System.out.print("Gracz " + (i % 2 + 1) + " wygrał!");
+        } else if (state.isDraw()) {
+            System.out.print("Remis.");
+        }
     }
 }
+
+
+
+

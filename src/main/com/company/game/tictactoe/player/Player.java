@@ -1,5 +1,6 @@
 package com.company.game.tictactoe.player;
 
+import com.company.game.tictactoe.gameElement.Board;
 import com.company.game.tictactoe.gameElement.Piece;
 
 public abstract class Player {
@@ -13,5 +14,5 @@ public abstract class Player {
         this.piece = piece;
     }
 
-    public abstract int makeMove();
+    public abstract int makeMove(Board board);
 }
