@@ -55,6 +55,51 @@ class GameStateTest {
         GameState state = new GameState(board);
         assertFalse(state.isDraw());
     }
+
+    @Test
+    void testIsWon() {
+        board.put(1, xPiece);
+        board.put(2, oPiece);
+        board.put(3, xPiece);
+        board.put(4, xPiece);
+        board.put(5, xPiece);
+        board.put(6, oPiece);
+        board.put(7, oPiece);
+        board.put(8, xPiece);
+        board.put(9, xPiece);
+        GameState state = new GameState(board);
+        assertTrue(state.isWon());
+    }
+
+    @Test
+    void testIsNotWon() {
+        board.put(1, xPiece);
+        board.put(2, oPiece);
+        board.put(3, xPiece);
+        board.put(4, xPiece);
+        board.put(5, oPiece);
+        board.put(6, xPiece);
+        board.put(7, oPiece);
+        board.put(8, xPiece);
+        board.put(9, oPiece);
+        GameState state = new GameState(board);
+        assertFalse(state.isWon());
+    }
+
+    @Test
+    void testIsNotWonWithEmptyBoard() {
+        GameState state = new GameState(board);
+        assertFalse(state.isWon());
+    }
+
+    @Test
+    void testIsWonWithNotFullBoard() {
+        board.put(4, xPiece);
+        board.put(5, xPiece);
+        board.put(6, xPiece);
+        GameState state = new GameState(board);
+        assertTrue(state.isWon());
+    }
 }
 
 

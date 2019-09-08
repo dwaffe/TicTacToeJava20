@@ -44,7 +44,7 @@ public class GameState {
     }
 
     public boolean isWon() {
-        return false;
+        return (new Judge(board).isWon());
     }
 }
 
