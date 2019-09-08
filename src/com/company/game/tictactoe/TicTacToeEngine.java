@@ -3,6 +3,7 @@ package com.company.game.tictactoe;
 import com.company.game.tictactoe.gameElement.Board;
 import com.company.game.tictactoe.gameElement.Piece;
 import com.company.game.tictactoe.gameLogic.GameState;
+import com.company.game.tictactoe.gameLogic.Judge;
 import com.company.game.tictactoe.player.Player;
 
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 public class TicTacToeEngine {
     private ArrayList<Player> players = new ArrayList<Player>();
     private GameState state = new GameState(new Board(3,3));
+    private Judge judge = new Judge(state.getBoard());
 
     TicTacToeEngine(Player playerOne, Player playerTwo) {
         players.add(playerOne);
@@ -19,13 +21,19 @@ public class TicTacToeEngine {
     public void run() {
         int i = 0;
         while (!state.isGameOver()) {
-
             Player currentPlayer = players.get(i % 2);
+            int playerMove = currentPlayer.makeMove();
+
+            if(!judge.isMoveValid(playerMove)) {
+                System.out.println("Ruch nieprawidłowy");
+                continue;
+            }
 
             state.getBoard().put(
-                    currentPlayer.makeMove(),
-                    currentPlayer.getPiece()
-                    );
+                playerMove,
+                currentPlayer.getPiece()
+            );
+            judge.setBoard(state.getBoard());
 
             System.out.println(state.getBoard());
             i++;
