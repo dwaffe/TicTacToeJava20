@@ -41,11 +41,14 @@ public class Judge {
                 if (board.get(combination[0]) == null) {
                     continue;
                 }
-                if (board.get(combination[0]) == board.get(combination[1]) && board.get(combination[1]) == board.get(combination[2])) {
+                if (board.get(combination[0]) == board.get(combination[1]) // tutaj zwracamy boolen dlatego potem dajemy &&
+                        && board.get(combination[1]) == board.get(combination[2])) {
                     return true;
                 }
             }
-        } catch (Exception e) {}
+        } catch (Exception e) {
+            System.out.println("Error: wrong combination");
+        }
 
         return false;
     }

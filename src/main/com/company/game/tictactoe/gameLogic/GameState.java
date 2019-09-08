@@ -18,11 +18,7 @@ public class GameState {
     }
 
     public boolean isGameOver() {
-        if (isWon() || isDraw()) {
-            return true;
-        }
-
-        return false;
+        return isWon() || isDraw();
     }
 
     public boolean isDraw() {

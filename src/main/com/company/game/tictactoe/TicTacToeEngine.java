@@ -12,7 +12,7 @@ public class TicTacToeEngine {
     private GameState state = new GameState(new Board(3,3));
     private Judge judge = new Judge(state.getBoard());
 
-    TicTacToeEngine(Player playerOne, Player playerTwo) {
+    TicTacToeEngine(Player playerOne, Player playerTwo) { // polimorfizm
         players.add(playerOne);
         players.add(playerTwo);
     }
@@ -35,7 +35,7 @@ public class TicTacToeEngine {
             );
             judge.setBoard(state.getBoard());
 
-            System.out.println(state.getBoard());
+            System.out.println(state.getBoard()); // JAVA sama wywoła funkcję toString()
             i++;
         }
         i--;
