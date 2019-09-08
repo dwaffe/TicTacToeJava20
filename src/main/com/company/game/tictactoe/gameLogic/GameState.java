@@ -18,6 +18,18 @@ public class GameState {
     }
 
     public boolean isGameOver() {
+        if (isWon() || isDraw()) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean isDraw() {
+        return false;
+    }
+
+    public boolean isWon() {
         return false;
     }
 }

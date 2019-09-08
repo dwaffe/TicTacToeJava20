@@ -1,7 +1,6 @@
 package com.company.game.tictactoe;
 
 import com.company.game.tictactoe.gameElement.Board;
-import com.company.game.tictactoe.gameElement.Piece;
 import com.company.game.tictactoe.gameLogic.GameState;
 import com.company.game.tictactoe.gameLogic.Judge;
 import com.company.game.tictactoe.player.Player;
@@ -21,6 +20,7 @@ public class TicTacToeEngine {
     public void run() {
         int i = 0;
         while (!state.isGameOver()) {
+            System.out.println("Gracz " + (i % 2 + 1) + ":");
             Player currentPlayer = players.get(i % 2);
             int playerMove = currentPlayer.makeMove();
 
