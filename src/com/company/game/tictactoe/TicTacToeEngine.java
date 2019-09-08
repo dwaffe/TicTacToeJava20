@@ -26,7 +26,8 @@ public class TicTacToeEngine {
                     currentPlayer.makeMove(),
                     currentPlayer.getPiece()
                     );
-            System.out.println();
+
+            System.out.println(state.getBoard());
             i++;
         }
     }
