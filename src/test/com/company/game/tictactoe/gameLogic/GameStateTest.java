@@ -11,9 +11,13 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class GameStateTest {
+    Board board;
+    Piece xPiece = new XPiece();
+    Piece oPiece = new OPiece();
 
     @BeforeEach
     void setUp() {
+        board = new Board(3, 3);
     }
 
     @AfterEach
@@ -22,10 +26,6 @@ class GameStateTest {
 
     @Test
     void testIsDraw() {
-        Board board = new Board(3, 3);
-        Piece xPiece = new XPiece();
-        Piece oPiece = new OPiece();
-
         board.put(1, xPiece);
         board.put(2, oPiece);
         board.put(3, xPiece);
@@ -39,4 +39,23 @@ class GameStateTest {
         GameState state = new GameState(board);
         assertTrue(state.isDraw());
     }
+
+    @Test
+    void testIsNotDraw() {
+        board.put(1, xPiece);
+        board.put(2, xPiece);
+        board.put(3, xPiece);
+        board.put(4, xPiece);
+        board.put(5, oPiece);
+        board.put(6, oPiece);
+        board.put(7, oPiece);
+        board.put(8, xPiece);
+        board.put(9, xPiece);
+
+        GameState state = new GameState(board);
+        assertFalse(state.isDraw());
+    }
 }
+
+
+

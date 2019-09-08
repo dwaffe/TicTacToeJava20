@@ -26,10 +26,26 @@ public class GameState {
     }
 
     public boolean isDraw() {
-        return false;
+        if (isWon()) {
+            return false;
+        }
+
+        try {
+            for (int i = 1; i < 10; i++) {
+                if (board.get(i) == null) {
+                    return false;
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Błąd w funkcji isDraw");
+        }
+
+        return true;
     }
 
     public boolean isWon() {
         return false;
     }
 }
+
+
